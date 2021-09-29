@@ -1,0 +1,57 @@
+title: |-
+  Run tests with ADB
+summary: |
+  Run tests from the emulator command-line shell with Android Debug Bridge
+description: |
+  Run tests from the emulator command-line shell with Android Debug Bridge.
+
+  When you run tests from the command-line with Android Debug Bridge (adb), you get more options for choosing the tests to run than with any other method. You can select individual test methods, filter tests according to their annotation, or specify testing options. Since the test run is controlled entirely from a command-line, you can customize your testing with shell scripts in various ways.
+website: https://testify.dev
+source_code_url: https://github.com/ndtp/bitrise-step-android-testify
+support_url: https://github.com/ndtp/bitrise-step-android-testify/issues
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+project_type_tags:
+   - android
+type_tags:
+  - test
+is_requires_admin_user: true
+is_always_run: false
+is_skippable: false
+run_if: ""
+
+toolkit:
+  bash:
+    entry_file: step.sh
+
+inputs:
+  - adb_command: "$ADB_COMMAND"
+    opts:
+      title: "The command-line statement to run with adb"
+      summary: "The command-line statement to run with adb"
+      description: |
+        The command-line statement to run with adb
+      is_sensitive: false
+      is_expand: true
+      is_required: true
+
+  - target_apk: "$TARGET_APK"
+    opts:
+      title: "The file name of test runner .apk"
+      summary: "The file name of test runner .apk"
+      description: |
+        The file name of test runner .apk
+      is_sensitive: false
+      is_expand: true
+      is_required: true
+
+  - verbose: false
+    opts:
+      title: Enable verbose log?
+      description: |-
+        You can enable the verbose log for easier debugging.
+      is_required: true
+      value_options:
+        - true
+        - false
