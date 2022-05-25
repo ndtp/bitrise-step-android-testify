@@ -61,33 +61,32 @@ install_apk()
     verbose "install_output:"
     verbose "$install_output"
 
-
     # TODO: Make the verification generic
-    info "Verify installation"
-    package=$(echo $target_apk | sed 's/tests/test/g' | sed 's/feature-//g' | sed 's/-internal-debug-androidTest\.apk//g' | sed 's/\-/\./g')
-    verbose "package:"
-    verbose "$package"
+    # info "Verify installation"
+    # package=$(echo $target_apk | sed 's/tests/test/g' | sed 's/feature-//g' | sed 's/-internal-debug-androidTest\.apk//g' | sed 's/\-/\./g')
+    # verbose "package:"
+    # verbose "$package"
 
-    instrumentation=$(adb shell pm list instrumentation)
-    verbose "instrumentation:"
-    verbose "$instrumentation"
+    # instrumentation=$(adb shell pm list instrumentation)
+    # verbose "instrumentation:"
+    # verbose "$instrumentation"
 
-    if [[ $instrumentation =~ "$package" ]]; then
-       success "Package $package verified"
-    else
-        echo "$instrumentation"
-        error "Failed to install $target_apk"
-        exit 1
-    fi
+    # if [[ $instrumentation =~ "$package" ]]; then
+    #    success "Package $package verified"
+    # else
+    #     echo "$instrumentation"
+    #     error "Failed to install $target_apk"
+    #     exit 1
+    # fi
 
-    if [[ "$install_output" =~ "failed" ]]; then
-        echo "$install_output"
-        error "Failed to install $target_apk"
-        exit 1
-    else
-        ok_results=$(echo "$install_output" | grep --color=no "Success")
-        success "$ok_results"
-    fi
+    # if [[ "$install_output" =~ "failed" ]]; then
+    #     echo "$install_output"
+    #     error "Failed to install $target_apk"
+    #     exit 1
+    # else
+    #     ok_results=$(echo "$install_output" | grep --color=no "Success")
+    #     success "$ok_results"
+    # fi
 }
 
 #assert_emulator()
