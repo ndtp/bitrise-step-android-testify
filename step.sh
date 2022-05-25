@@ -85,10 +85,10 @@ install_apk()
     fi
 }
 
-assert_emulator()
-{
-    # TODO: Verify that an emulator is loaded and ready
-}
+#assert_emulator()
+#{
+#    # TODO: Verify that an emulator is loaded and ready
+#}
 
 configure_emulator()
 {
@@ -96,7 +96,7 @@ configure_emulator()
 
     # Adjust device density
     # TODO: make this a parameter
-    adb shell wm density 441
+    # adb shell wm density 441
 
     # Disable animations
     # TODO: Make this a parmeter; default:true
@@ -231,7 +231,7 @@ main()
     SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
     echo "SCRIPT_DIR: $SCRIPT_DIR"
     validate_inputs
-    assert_emulator
+    #assert_emulator
     install_apk
     configure_emulator
     invoke_adb_command
