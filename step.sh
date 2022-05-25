@@ -51,8 +51,13 @@ install_apk()
 {
     verbose $(adb logcat -m 1 -d)
 
+# adb: failed to stat /bitrise/src/artifacts/Sample-debug.apk: No such file or directory
+# $BITRISE_SOURCE_DIR/artifacts is not the default destination
+# /bitrise/deploy/Sample-debug.apk
+# $BITRISE_APK_PATH
+
     info "Install $target_apk"
-    install_output="$( { adb install -r "$BITRISE_SOURCE_DIR/artifacts/$target_apk"; } 2>&1 )"
+    install_output="$( { adb install -r "$BITRISE_APK_PATH"; } 2>&1 )"
     verbose "install_output:"
     verbose "$install_output"
 
