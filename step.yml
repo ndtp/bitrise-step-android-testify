@@ -136,3 +136,13 @@ inputs:
       value_options:
         - true
         - false
+
+  - demo: false
+    opts:
+      title: Enable demo mode?
+      description: |-
+        When enabled, demo mode will suppress any failures.
+      is_required: false
+      value_options:
+        - true
+        - false

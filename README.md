@@ -57,6 +57,10 @@ The gradle project module name. For example, `:app`
 
 You can enable the verbose log for easier debugging.
 
+### demo
+
+When enabled, demo mode will suppress any failures.
+
 ---
 
 # License

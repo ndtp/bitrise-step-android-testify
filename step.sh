@@ -150,7 +150,14 @@ exit_error()
     echo "$adb_command_output"
     echo "$logcat_output"
     error "Tests failed $1"
-    exit 1
+
+    envman add --key TESTIFY_EXIT_STATUS --value 1
+
+    if [ "$demo" == true ] || [ "$DEMO" == true ]; then
+        exit 0
+    else
+        exit 1
+    fi
 }
 
 verify_test_status()
@@ -199,6 +206,7 @@ verify_test_status()
     ok_results=$(echo "$adb_command_output" | grep --color=no "OK")
     success "$ok_results"
 
+    envman add --key TESTIFY_EXIT_STATUS --value 0
     exit 0
 }
 
