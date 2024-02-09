@@ -26,15 +26,6 @@ toolkit:
     entry_file: step.sh
 
 inputs:
-  - adb_command: "$ADB_COMMAND"
-    opts:
-      title: "The command-line statement to run with adb"
-      summary: "The command-line statement to run with adb"
-      description: |
-        The command-line statement to run with adb
-      is_sensitive: false
-      is_expand: true
-      is_required: true
 
   - module: "$MODULE"
     opts:
@@ -126,6 +117,20 @@ inputs:
       value_options:
         - true
         - false
+
+  - shard_count: 0
+    opts:
+      title: "Shard count"
+      is_sensitive: false
+      is_expand: true
+      is_required: false
+
+  - shard_index: 0
+    opts:
+      title: "Shard index"
+      is_sensitive: false
+      is_expand: true
+      is_required: false
 
   - verbose: false
     opts:

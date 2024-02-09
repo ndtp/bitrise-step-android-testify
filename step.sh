@@ -120,7 +120,12 @@ configure_emulator()
 
 invoke_adb_command()
 {
-    local adb_command="adb shell am instrument -r -w -e annotation dev.testify.annotation.ScreenshotInstrumentation $test_package/$test_runner"
+
+    if [ -n "$shard_count" ] && [ "$shard_count" -gt "0" ]; then
+        shard="-e numShards $shard_count -e shardIndex $shard_index"
+    fi
+
+    local adb_command="adb shell am instrument -r -w $shard -e annotation dev.testify.annotation.ScreenshotInstrumentation $test_package/$test_runner"
 
     info "Running '$adb_command'..."
     adb logcat -c
